@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<ol>
+{% for video in video_info_list %}
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+    aria-controls="offcanvasScrolling">More Infomration</button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Deep Dive</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <h2>{{wiki_info[video['channel']]['title']}}</h2>
+        <p>{{wiki_info[video['channel']]['summary']}}</p>
+    </div>
+</div>
+<li>
+    <h2>{{video['title']}}</h2>
+    <iframe width="560" height="315" src="{{video['link']}}" frameborder="0"
+    allowfullscreen></iframe>
+    <p> <b>View Count:</b> {{video['viewCount']}} 
+    <br> <b>Channel:</b> {{video['channel']}}    
+    <br> <b>Description:</b> {{video['description']}}
+    </p>
+</li>
+{% endfor %}
+</ol
+
+{% endblock content %}
